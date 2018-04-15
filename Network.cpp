@@ -6,7 +6,7 @@
 /*   By: skushnir <skushnir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 18:55:40 by skushnir          #+#    #+#             */
-/*   Updated: 2018/04/14 22:15:25 by skushnir         ###   ########.fr       */
+/*   Updated: 2018/04/15 18:54:58 by skushnir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ Network::~Network() {  }
 
 Network & Network::operator = (Network const & obj) { data = obj.data; return (*this); }
 
-std::string const & Network::getData(void) { return (data); }
+std::vector<std::string> const & Network::getData(void) { return (data); }
 
-std::string const & Network::data_reading(void)
+void Network::data_reading(void)
 {
 	FILE* 		pipe;
 	std::string	tmp;
@@ -40,6 +40,6 @@ std::string const & Network::data_reading(void)
 	}
 	pclose(pipe);
 	size_t	start = tmp.find("Networks:");
-	data += tmp.substr(start, tmp.find('\n', start) - start + 1);
-	return (data);
+	data.clear();
+	data.push_back(tmp.substr(start, tmp.find('\n', start) - start));
 }

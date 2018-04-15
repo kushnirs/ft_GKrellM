@@ -6,7 +6,7 @@
 /*   By: skushnir <skushnir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 18:24:08 by skushnir          #+#    #+#             */
-/*   Updated: 2018/04/14 23:06:39 by skushnir         ###   ########.fr       */
+/*   Updated: 2018/04/15 15:13:16 by skushnir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 class IMonitorDisplay {
 public:
-	virtual void	display_module(std::string const & module) = 0;
+	virtual void	init_module() = 0;
 };
 
 

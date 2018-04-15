@@ -6,7 +6,7 @@
 /*   By: skushnir <skushnir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 18:55:43 by skushnir          #+#    #+#             */
-/*   Updated: 2018/04/14 21:21:37 by skushnir         ###   ########.fr       */
+/*   Updated: 2018/04/15 18:53:37 by skushnir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@
 
 class Ram : public IMonitorModule {
 private:
-	std::string		data;
+	std::vector<std::string>		data;
 	void			activity(void);
 public:
 	Ram();
 	Ram(Ram const & obj);
 	~Ram();
-	std::string const & getData(void);
+	std::vector<std::string> const & getData(void);
 	Ram & operator = (Ram const & obj);
-	std::string const & data_reading(void);
+	void data_reading(void);
 };
 
 #endif

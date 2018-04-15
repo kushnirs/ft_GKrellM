@@ -6,7 +6,7 @@
 /*   By: skushnir <skushnir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 18:55:43 by skushnir          #+#    #+#             */
-/*   Updated: 2018/04/14 20:45:06 by skushnir         ###   ########.fr       */
+/*   Updated: 2018/04/15 18:57:45 by skushnir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@
 
 class Cpu : public IMonitorModule {
 private:
-	std::string		data;
-	void			activity(void);
+	std::vector<std::string>		data;
+void			activity(void);
 public:
 	Cpu();
 	Cpu(Cpu const & obj);
 	~Cpu();
-	std::string const & getData(void);
+	std::vector<std::string> const & getData(void);
 	Cpu & operator = (Cpu const & obj);
-	std::string const & data_reading(void);
+	void data_reading(void);
 };
 
 #endif

@@ -6,7 +6,7 @@
 #    By: skushnir <skushnir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/02 10:58:17 by skushnir          #+#    #+#              #
-#    Updated: 2018/04/14 23:31:42 by skushnir         ###   ########.fr        #
+#    Updated: 2018/04/15 19:51:45 by skushnir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@ NAME		= ft_gkrellm
 
 CC			= clang++
 
-CFLAGS		= -Wall -Wextra -Werror -g
+CFLAGS		= -Wall -Wextra -Werror
 
-SRC			= main.cpp UserHostName.cpp TimeData.cpp Info.cpp Cpu.cpp Ram.cpp Network.cpp Graphic.cpp
+SRC			= main.cpp UserHostName.cpp TimeData.cpp Info.cpp Cpu.cpp Ram.cpp Network.cpp Graphic.cpp Gkrellm.cpp
 
 OBJ			= $(SRC:.cpp=.o)
 

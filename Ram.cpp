@@ -6,7 +6,7 @@
 /*   By: skushnir <skushnir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 18:55:40 by skushnir          #+#    #+#             */
-/*   Updated: 2018/04/14 22:13:40 by skushnir         ###   ########.fr       */
+/*   Updated: 2018/04/15 18:54:12 by skushnir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ Ram::~Ram() {  }
 
 Ram & Ram::operator = (Ram const & obj) { data = obj.data; return (*this); }
 
-std::string const & Ram::getData(void) { return (data); }
+std::vector<std::string> const & Ram::getData(void) { return (data); }
 
-std::string const & Ram::data_reading(void)
+void Ram::data_reading(void)
 {
 	FILE* 		pipe;
 	std::string	tmp;
@@ -40,6 +40,6 @@ std::string const & Ram::data_reading(void)
 	}
 	pclose(pipe);
 	size_t	start = tmp.find("PhysMem:");
-	data += tmp.substr(start, tmp.find('\n', start) - start + 1);
-	return (data);
+	data.clear();
+	data.push_back(tmp.substr(start, tmp.find('\n', start) - start));
 }

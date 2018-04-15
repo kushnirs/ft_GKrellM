@@ -6,7 +6,7 @@
 /*   By: skushnir <skushnir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 18:59:16 by skushnir          #+#    #+#             */
-/*   Updated: 2018/04/14 23:27:03 by skushnir         ###   ########.fr       */
+/*   Updated: 2018/04/15 20:55:15 by skushnir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,23 @@
 
 class Graphic : public IMonitorDisplay {
 private:
+	std::string			_name;
 	SDL_Window			*win;
 	SDL_Surface			*surface;
-	SDL_Event			event;
-	int					close_sdl(void);
-	int					events(void);
+	int					x;
+	int					y;
+
+	static int		_last_y;
 public:
 	Graphic();
+	Graphic(std::string name, int x, int y);
 	Graphic(Graphic const & obj);
 	~Graphic();
-	void display_message(std::string const & module);
+	SDL_Window	*getWin();
+	void	init_module();
+	void 	display_message(std::string const & module, int x, int y);
 	Graphic & operator = (Graphic const & obj);
-	void	display_module(std::string const & module);
+	void	display_module();
 };
 
 #endif

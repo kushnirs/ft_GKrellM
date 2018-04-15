@@ -6,7 +6,7 @@
 /*   By: skushnir <skushnir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 18:55:40 by skushnir          #+#    #+#             */
-/*   Updated: 2018/04/14 21:20:44 by skushnir         ###   ########.fr       */
+/*   Updated: 2018/04/15 18:58:35 by skushnir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Cpu::~Cpu() {  }
 
 Cpu & Cpu::operator = (Cpu const & obj) { data = obj.data; return (*this); }
 
-std::string const & Cpu::getData(void) { return (data); }
+std::vector<std::string> const & Cpu::getData(void) { return (data); }
 
 void			Cpu::activity(void)
 {
@@ -40,15 +40,15 @@ void			Cpu::activity(void)
 	}
 	pclose(pipe);
 	size_t	start = tmp.find("Processes:");
-	data += tmp.substr(start, tmp.find('\n', start) + 1);
+	data.push_back(tmp.substr(start, tmp.find('\n', start)));
 	start = tmp.find("CPU usage");
-	data.append(tmp, start, (tmp.find("idle") + 6) - start);
+	data.push_back(tmp.substr(start, (tmp.find("idle") + 5) - start));
 }
 
-
-std::string const & Cpu::data_reading(void)
+void  Cpu::data_reading(void)
 {
 	FILE* pipe;
+	std::string tmp;
 	char buffer [100];
 	std::string command[] = { "sysctl -n machdep.cpu.brand_string", "sysctl -n hw.ncpu"};
 	for (int i = 0; i < 2; i++)
@@ -61,12 +61,13 @@ std::string const & Cpu::data_reading(void)
 		}
 		while (fgets(buffer, 100, pipe) != NULL)
 		{
-		    data += buffer;
-		    data[data.size() - 1] = 32;
+		    tmp += buffer;
+		    tmp[tmp.size() - 1] = 32;
 		}
-		if (i) { data[data.size() - 1] = 32; data += "cores\n";}
+		if (i) { tmp[tmp.size() - 1] = 32; tmp += "cores";}
 		pclose(pipe);
 	}
+	data.clear();
+	data.push_back(tmp);
 	activity();
-	return (data);
 }

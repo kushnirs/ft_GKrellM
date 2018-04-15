@@ -6,7 +6,7 @@
 /*   By: skushnir <skushnir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 18:54:52 by skushnir          #+#    #+#             */
-/*   Updated: 2018/04/14 20:14:24 by skushnir         ###   ########.fr       */
+/*   Updated: 2018/04/15 18:55:40 by skushnir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 
 class Info : public IMonitorModule {
 private:
-	std::string		data;
+	std::vector<std::string> data;
 public:
 	Info();
 	Info(Info const & obj);
 	~Info();
-	std::string const & getData(void);
+	std::vector<std::string> const & getData(void);
 	Info & operator = (Info const & obj);
-	std::string const & data_reading(void);
+	void data_reading(void);
 };
 
 #endif

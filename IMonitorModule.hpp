@@ -6,7 +6,7 @@
 /*   By: skushnir <skushnir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/08 21:17:41 by skushnir          #+#    #+#             */
-/*   Updated: 2018/04/14 19:35:57 by skushnir         ###   ########.fr       */
+/*   Updated: 2018/04/15 19:25:19 by skushnir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 # define IMONITORMODULE_HPP
 
 #include <iostream>
+#include <vector>
 #include <ncurses.h>
 
 class IMonitorModule {
 public:
-	virtual std::string const & data_reading() = 0;
+	virtual void data_reading() = 0;
+	virtual std::vector<std::string> const & getData(void) = 0;
 };
 
 #endif

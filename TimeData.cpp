@@ -6,7 +6,7 @@
 /*   By: skushnir <skushnir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 18:55:29 by skushnir          #+#    #+#             */
-/*   Updated: 2018/04/14 20:23:45 by skushnir         ###   ########.fr       */
+/*   Updated: 2018/04/15 18:53:16 by skushnir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ TimeData::~TimeData() {  }
 
 TimeData & TimeData::operator = (TimeData const & obj) { data = obj.data; return (*this); }
 
-std::string const & TimeData::getData(void) { return (data); }
+std::vector<std::string> const & TimeData::getData(void) { return (data); }
 
-std::string const & TimeData::data_reading(void)
+void TimeData::data_reading(void)
 {
 	time_t rawtime;
 	struct tm *info;
@@ -31,6 +31,6 @@ std::string const & TimeData::data_reading(void)
 	time( &rawtime );
 	info = localtime( &rawtime );
 	strftime(buffer,80,"%c", info);
-	data = buffer;
-	return (data += "\n");
+	data.clear();
+	data.push_back(buffer);
 }
